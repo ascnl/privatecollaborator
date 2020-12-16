@@ -2,6 +2,7 @@
 A script for installing private Burp Collaborator with Let's Encrypt SSL-certificate.
 Should work on (Ubuntu 18.04):
 - Amazon AWS EC2 VM with or without Elastic IP.
+- Microsoft Azure VM
 - DigitalOcean VM with or without Floating IP.
 - Any other platform as long as the VM has public IP.
 
