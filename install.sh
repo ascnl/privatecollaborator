@@ -47,7 +47,7 @@ sed -i "s/EXT_IP/$MYPUBLICIP/g" /usr/local/collaborator/collaborator.config
 sed -i "s/BDOMAIN/$DOMAIN/g" /usr/local/collaborator/collaborator.config
 cp burpcollaborator.service /etc/systemd/system/
 cp startcollab.sh /usr/local/collaborator/
-cp renewcert.sh /etc/cron.daily/
+cp renewcert /etc/cron.daily/
 
 cd /usr/local/collaborator/
 chmod +x /usr/local/collaborator/*
@@ -69,7 +69,7 @@ rm -rf /usr/local/collaborator/keys
 certbot certonly --manual-auth-hook "/usr/local/collaborator/dnshook.sh $MYPRIVATEIP" --manual-cleanup-hook /usr/local/collaborator/cleanup.sh \
     -d "*.$DOMAIN, $DOMAIN"  \
     --server https://acme-v02.api.letsencrypt.org/directory \
-    --manual --agree-tos --no-eff-email --manual-public-ip-logging-ok --preferred-challenges dns-01
+    --manual --agree-tos --no-eff-email –register-unsafely-without-email --manual-public-ip-logging-ok --preferred-challenges dns-01
 
 CERT_PATH=/etc/letsencrypt/live/$DOMAIN
 ln -s $CERT_PATH /usr/local/collaborator/keys
