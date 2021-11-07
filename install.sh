@@ -19,7 +19,7 @@ fi;
 curl --header 'Metadata: true' "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" -s --output /dev/null -f -m 1
 if [ 0 -eq $? ]; then
   MYPRIVATEIP=$(curl --header 'Metadata: true' "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/privateIpAddress?api-version=2017-08-01&format=text" -s)
-  MYPUBLICIP=$(curl --header 'Metadata: true' "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text" -s)
+  MYPUBLICIP=$(curl http://checkip.amazonaws.com/ -s)
 fi;
 
 # Get IPs if running on Digitalocean.
